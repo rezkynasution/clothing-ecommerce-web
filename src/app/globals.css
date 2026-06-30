@@ -1,0 +1,283 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode (.dark on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/* Design tokens                                                       */
+/* ------------------------------------------------------------------ */
+:root {
+  --background: #f8f8f8;
+  --background-elevated: #ffffff;
+  --foreground: #111111;
+  --muted: #6b6b6b;
+  --accent: #000000;
+  --accent-foreground: #ffffff;
+
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-highlight: rgba(255, 255, 255, 0.7);
+  --glass-shadow: rgba(17, 17, 17, 0.08);
+  --glass-blur: 30px;
+
+  --hairline: rgba(17, 17, 17, 0.08);
+  --ring: rgba(17, 17, 17, 0.16);
+}
+
+.dark {
+  --background: #090909;
+  --background-elevated: #121212;
+  --foreground: #f4f4f4;
+  --muted: #9a9a9a;
+  --accent: #ffffff;
+  --accent-foreground: #0a0a0a;
+
+  --glass-bg: rgba(20, 20, 20, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
+  --glass-blur: 30px;
+
+  --hairline: rgba(255, 255, 255, 0.08);
+  --ring: rgba(255, 255, 255, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-hairline: var(--hairline);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+
+  --radius-glass: 1.75rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+* {
+  border-color: var(--hairline);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::selection {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ring);
+  border-radius: 999px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Typography utilities                                                */
+/* ------------------------------------------------------------------ */
+.font-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
+.display-hero {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  font-size: clamp(2.75rem, 9vw, 6rem);
+}
+
+.display-xl {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  font-size: clamp(2.25rem, 6vw, 4.25rem);
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------------ */
+/* Glassmorphism                                                       */
+/* ------------------------------------------------------------------ */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  box-shadow: 0 8px 32px var(--glass-shadow),
+    inset 0 1px 0 var(--glass-highlight);
+}
+
+.glass-soft {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+
+.glass-nav {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  box-shadow: 0 10px 40px -12px var(--glass-shadow),
+    inset 0 1px 0 var(--glass-highlight);
+}
+
+/* Animated gradient mesh used as a fallback / ambient background */
+.mesh-bg {
+  background-image: radial-gradient(
+      at 20% 20%,
+      rgba(120, 120, 255, 0.12) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 80% 10%, rgba(255, 120, 180, 0.1) 0px, transparent 50%),
+    radial-gradient(at 75% 80%, rgba(120, 200, 255, 0.12) 0px, transparent 50%),
+    radial-gradient(at 10% 85%, rgba(180, 160, 255, 0.1) 0px, transparent 50%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Micro-interaction helpers                                           */
+/* ------------------------------------------------------------------ */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+.hover-lift {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
+
+/* Reveal-on-scroll base state (progressively enhanced by JS) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(8px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+/* Marquee / horizontal auto scroll */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+.marquee-paused:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+/* Slow background zoom for hero images (Ken Burns) */
+@keyframes kenburns {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.18);
+  }
+}
+.animate-kenburns {
+  animation: kenburns 8s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+  .animate-marquee,
+  .animate-kenburns,
+  .animate-spin-slow {
+    animation: none;
+  }
+}
