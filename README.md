@@ -1,62 +1,108 @@
-# MAISON — Premium Fashion E‑Commerce
+# 👔 Luxury Clothing E-Commerce
 
-An Awwwards‑style, luxury fashion storefront built as an immersive digital
-experience: glassmorphism, cinematic smooth scrolling, premium motion design,
-and pixel‑perfect responsive layouts.
+A modern and elegant luxury fashion e-commerce landing page built with **HTML, CSS, and JavaScript**. Designed with a premium aesthetic, smooth animations, and a fully responsive layout to deliver an exceptional shopping experience across all devices.
 
-## Tech stack
+## ✨ Features
 
-- **Next.js 16** (App Router) + **React 19** + **TypeScript**
-- **Tailwind CSS v4** (class‑based theming via a custom `dark` variant)
-- **Framer Motion** — section reveals, slider, micro‑interactions
-- **Lenis** — buttery smooth / cinematic scrolling
-- **GSAP** & **SplitType** — available for advanced text/scroll effects
-- **lucide-react** — iconography
-- Fonts: **Space Grotesk** (display) + **Inter** (body)
+- 🎨 Modern Luxury UI Design
+- 📱 Fully Responsive (Desktop, Tablet & Mobile)
+- 🛍️ Premium Hero Section
+- 👕 Featured Products Showcase
+- ⭐ Best Seller Collection
+- 🔥 New Arrivals Section
+- 💎 Luxury Brand Experience
+- 🛒 Shopping Cart Interface (UI)
+- ❤️ Wishlist Button
+- 🔍 Product Search UI
+- 🎯 Category Navigation
+- 🌙 Smooth Scroll Animations
+- ⚡ Fast Loading Performance
+- ♿ Clean & Accessible Layout
 
-## Getting started
+## 🛠️ Tech Stack
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+
+## 📸 Preview
+
+![Luxury Clothing Preview](preview.png)
+
+> Replace `preview.png` with a screenshot of your website.
+
+## 🌐 Live Demo
+
+👉 **https://luxury-clothing-ecommerce-web.vercel.app/**
+
+## 🚀 Getting Started
+
+Clone the repository:
 
 ```bash
-npm install
-npm run dev      # http://localhost:3000
+git clone https://github.com/yourusername/luxury-clothing-ecommerce.git
 ```
+
+Open the project:
 
 ```bash
-npm run build    # production build
-npm run start    # serve the production build
+cd luxury-clothing-ecommerce
 ```
 
-## Features
+Run locally by opening `index.html` in your browser, or use a local development server such as **Live Server**.
 
-- Floating navbar that turns to glassmorphism on scroll, full‑screen menu,
-  command‑style search overlay, animated theme toggle, live cart badge.
-- 100vh hero slider: autoplay (5s), manual arrows, animated pagination,
-  fade transitions, Ken Burns zoom, and mouse/parallax movement.
-- Glass category grid, featured product grid with hover quick‑view / wishlist /
-  add‑to‑cart, countdown promotion banner, infinite best‑seller marquee,
-  animated "why choose us", auto‑sliding testimonials, Instagram masonry,
-  glass newsletter and a minimal oversized‑logo footer.
-- Light & dark themes with a smooth animated transition (persisted to
-  `localStorage`, respects system preference, no flash on load).
-- Scroll‑reveal (fade / blur / stagger / parallax) throughout.
-
-## Project structure
+## 📁 Project Structure
 
 ```
-src/
-  app/                  # layout, page, global design tokens
-  components/
-    layout/             # navbar, footer
-    providers/          # theme, cart, Lenis smooth scroll
-    sections/           # hero, categories, featured, promotion, …
-    ui/                 # button, reveal, product-card, smart-image, …
-  lib/                  # data (mock catalog) + utils
+luxury-clothing-ecommerce/
+│
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   └── fonts/
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   └── script.js
+│
+├── index.html
+├── LICENSE
+└── README.md
 ```
 
-## Notes
+## 🎯 Purpose
 
-- Imagery is served from Unsplash via `next/image`. `SmartImage`
-  (`src/components/ui/smart-image.tsx`) shows a shimmer while loading and an
-  elegant gradient fallback if any remote image fails — the layout never breaks.
-- Remote image hosts are whitelisted in `next.config.ts`.
-- All motion respects `prefers-reduced-motion`.
+This project was created to demonstrate a modern luxury fashion website with a strong emphasis on:
+
+- Premium visual design
+- Responsive user experience
+- Clean code structure
+- Front-end development skills
+- Portfolio presentation
+
+## 📈 Future Improvements
+
+- User Authentication
+- Shopping Cart Functionality
+- Product Detail Pages
+- Product Filtering & Sorting
+- Wishlist System
+- Dark Mode
+- Checkout Page
+- Payment Integration
+- Backend API Integration
+- Admin Dashboard
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+Feel free to use, modify, and distribute this project for personal or commercial purposes.
+
+## 👨‍💻 Author
+
+**Rezky Novriansyah Nasution**
+
+If you like this project, don't forget to ⭐ star the repository!
